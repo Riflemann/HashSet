@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -40,10 +37,10 @@ public class Main {
         Recipe omelet = new Recipe("Омлет");
         Recipe omelet2 = new Recipe("Омлет2");
 
-        saladFresh.addProductInRecipe(tomatoes, cucumbers);
-        fruitDish.addProductInRecipe(orange, pomegranate);
-        omelet.addProductInRecipe(milk, eggs, beckon);
-        omelet2.addProductInRecipe(milk, eggs, beckon);
+//        saladFresh.addProductInRecipe(tomatoes, cucumbers);
+//        fruitDish.addProductInRecipe(orange, pomegranate);
+//        omelet.addProductInRecipe(milk, eggs, beckon);
+//        omelet2.addProductInRecipe(milk, eggs, beckon);
 
         saladFresh.addRecipeInSet(allRecipe);
         fruitDish.addRecipeInSet(allRecipe);
@@ -132,5 +129,115 @@ public class Main {
         System.out.println(passportMap.get(54616546L));
 
 
+        System.out.println("\nДомашка коллекции урок №3");
+        System.out.println("ДЗ-1");
+        System.out.println("Задание 1");
+
+        Phonebook phonebook1 = new Phonebook("+65161256165", "Петров");
+        Phonebook phonebook2 = new Phonebook("+6561561665", "Петрова");
+        Phonebook phonebook3 = new Phonebook("+651656165", "Иванов");
+        Phonebook phonebook4 = new Phonebook("+65161565", "Иванова");
+        Phonebook phonebook5 = new Phonebook("+6516156165", "Зайцев");
+        Phonebook phonebook6 = new Phonebook("+6516156165", "Зайцева");
+        Phonebook phonebook7 = new Phonebook("+65161565", "Волкова");
+        Phonebook phonebook8 = new Phonebook("16123456165", "Петров1");
+        Phonebook phonebook9 = new Phonebook("6156165", "Петров2");
+        Phonebook phonebook10 = new Phonebook("65234216155", "Петров3");
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put(phonebook1.getName(), phonebook1.getNumber());
+        hashMap.put(phonebook2.getName(), phonebook2.getNumber());
+        hashMap.put(phonebook3.getName(), phonebook3.getNumber());
+        hashMap.put(phonebook4.getName(), phonebook4.getNumber());
+        hashMap.put(phonebook5.getName(), phonebook5.getNumber());
+        hashMap.put(phonebook6.getName(), phonebook6.getNumber());
+        hashMap.put(phonebook7.getName(), phonebook7.getNumber());
+        hashMap.put(phonebook8.getName(), phonebook8.getNumber());
+        hashMap.put(phonebook9.getName(), phonebook9.getNumber());
+        hashMap.put(phonebook10.getName(), phonebook10.getNumber());
+
+        System.out.println(hashMap);
+
+        System.out.println("\n===========================");
+        System.out.println("ДЗ-1");
+        System.out.println("Задание 2");
+
+        saladFresh.addProductInRecipe(tomatoes, 3);
+        saladFresh.addProductInRecipe(cucumbers, 2);
+        fruitDish.addProductInRecipe(orange, 3);
+        fruitDish.addProductInRecipe(pomegranate, 2);
+        omelet.addProductInRecipe(milk, 0);
+        omelet.addProductInRecipe(eggs, 3);
+        omelet.addProductInRecipe(beckon, 4);
+
+        System.out.println("\n===========================");
+        System.out.println("ДЗ-1");
+        System.out.println("Задание 3");
+
+        Task3 task3 = new Task3();
+        task3.addInTask3("12", 12);
+        System.out.println(task3.taskMap);
+        task3.addInTask3("12", 13);
+        System.out.println(task3.taskMap);
+
+        System.out.println("\n===========================");
+        System.out.println("ДЗ-2");
+        System.out.println("Задание 1");
+
+        Map<String, List<Integer>> hW3Task1 = new HashMap<>();
+        List<Integer> integerList = new ArrayList<>(List.of(
+                (int) (Math.random() * 1000) + 1,
+                (int) (Math.random() * 1000) + 1,
+                (int) (Math.random() * 1000) + 1));
+        List<Integer> integerList2 = new ArrayList<>(List.of(
+                (int) (Math.random() * 1000) + 1,
+                (int) (Math.random() * 1000) + 1,
+                (int) (Math.random() * 1000) + 1));
+        List<Integer> integerList3 = new ArrayList<>(List.of(
+                (int) (Math.random() * 1000) + 1,
+                (int) (Math.random() * 1000) + 1,
+                (int) (Math.random() * 1000) + 1));
+        List<Integer> integerList4 = new ArrayList<>(List.of(
+                (int) (Math.random() * 1000) + 1,
+                (int) (Math.random() * 1000) + 1,
+                (int) (Math.random() * 1000) + 1));
+        List<Integer> integerList5 = new ArrayList<>(List.of(
+                (int) (Math.random() * 1000) + 1,
+                (int) (Math.random() * 1000) + 1,
+                (int) (Math.random() * 1000) + 1));
+        hW3Task1.put("One", integerList);
+        hW3Task1.put("Two", integerList2);
+        hW3Task1.put("Three", integerList3);
+        hW3Task1.put("Four", integerList4);
+        hW3Task1.put("Five", integerList5);
+        System.out.println(hW3Task1);
+
+        Map<String, Integer> targetHW3Task1 = new HashMap<>();
+        for (Map.Entry<String, List<Integer>> target : hW3Task1.entrySet()) {
+            targetHW3Task1.put(target.getKey(), calcSumOfList(target.getValue()));
+        }
+        System.out.println(targetHW3Task1);
+
+        System.out.println("\n===========================");
+        System.out.println("ДЗ-2");
+        System.out.println("Задание 2");
+
+        Map<Integer, String> linkedHashMap = new LinkedHashMap<>();
+
+        for (int i = 0; i < 10; i++) {
+            String s = "String" + i;
+            linkedHashMap.put(i, s);
+        }
+        System.out.println(linkedHashMap);
+
+
+    }
+
+    public static int calcSumOfList(List<Integer> list) {
+        int sum = 0;
+        for (Integer integer : list) {
+            sum += integer;
+        }
+        return sum;
     }
 }

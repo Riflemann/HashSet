@@ -2,20 +2,20 @@ import java.util.*;
 
 public class Recipe {
 
-    private Set<Products> productsSet;
-    private int sumProducts;
+    private HashMap<Products,Integer> productsMap;
+    private double sumProducts;
     private String name;
 
     public Recipe(String name) {
-        this.productsSet = new HashSet<>();
+        this.productsMap = new HashMap<>();
         this.name = name;
     }
 
-    public Set<Products> getProductsSet() {
-        return productsSet;
+    public HashMap<Products,Integer> getProductsMap() {
+        return productsMap;
     }
 
-    public int getSumProducts() {
+    public double getSumProducts() {
         return sumProducts;
     }
 
@@ -23,10 +23,11 @@ public class Recipe {
         return name;
     }
 
-    public void addProductInRecipe(Products... products) {
-        this.productsSet.addAll(Arrays.asList(products));
-        for (Products prod : this.productsSet) {
-            this.sumProducts += prod.getCost();
+    public void addProductInRecipe(Products products, int amount) {
+        amount = amount == 0 ? 1 : amount;
+        this.productsMap.put(products, amount);
+        for (Products product : this.productsMap.keySet() ) {
+            this.sumProducts += product.getCost() * this.productsMap.get(product);
         }
     }
 
@@ -41,7 +42,7 @@ public class Recipe {
     @Override
     public String toString() {
         return "Recipe{" +
-                "recipeSet=" + productsSet +
+                "recipeSet=" + productsMap +
                 ", sumProducts=" + sumProducts +
                 ", name='" + name + '\'' +
                 '}';
@@ -58,6 +59,6 @@ public class Recipe {
 
     @Override
     public int hashCode() {
-        return Objects.hash(productsSet, sumProducts, name);
+        return Objects.hash(productsMap, sumProducts, name);
     }
 }
